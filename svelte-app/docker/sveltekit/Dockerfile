@@ -1,5 +1,5 @@
 # ビルド用
-FROM node:lts-slim as builder
+FROM node:lts-slim as build
 
 WORKDIR /app
 
@@ -19,9 +19,9 @@ USER svelteuser
 
 WORKDIR /app
 
-COPY --from=builder --chown=svelteuser:svelteuser /app/build ./build
-COPY --from=builder --chown=svelteuser:svelteuser /app/package.json .
-COPY --from=builder --chown=svelteuser:svelteuser /app/node_modules ./node_modules
+COPY --from=build --chown=svelteuser:svelteuser /app/build ./build
+COPY --from=build --chown=svelteuser:svelteuser /app/package.json .
+COPY --from=build --chown=svelteuser:svelteuser /app/node_modules ./node_modules
 
 EXPOSE 3000
 
