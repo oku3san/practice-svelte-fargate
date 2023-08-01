@@ -69,6 +69,31 @@ resource "aws_iam_role_policy_attachment" "ecs-task-role" {
   policy_arn = aws_iam_policy.ecs-task-role.arn
 }
 
+resource "aws_security_group" "practice-svelte-fargate" {
+  name        = "practice-svelte-fargate"
+
+  # セキュリティグループを配置するVPC
+  vpc_id      = aws_vpc.main.id
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group_rule" "practice-svelte-fargate" {
+  security_group_id = aws_security_group.practice-svelte-fargate.id
+
+  type = "ingress"
+
+  from_port = 80
+  to_port   = 80
+  protocol  = "tcp"
+
+  cidr_blocks = ["0.0.0.0/0"]
+}
+
 resource "aws_ecs_cluster" "main" {
   name = "practice-svelte-fargate"
 }
