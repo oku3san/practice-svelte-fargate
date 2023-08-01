@@ -1,0 +1,10 @@
+region: ap-northeast-1
+cluster: "{{ must_env `CLUSTER_NAME` }}"
+service: practice-svelte-fargate
+service_definition: "./ecs-service-def.json"
+task_definition: "./ecs-task-def.json"
+timeout: 5m
+plugins:
+  - name: tfstate
+    config:
+      url: remote://app.terraform.io/{{ must_env `TFC_ORGANIZATION` }}/{{ must_env `CLUSTER_NAME` }}
