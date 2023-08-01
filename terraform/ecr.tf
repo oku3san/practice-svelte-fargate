@@ -9,7 +9,6 @@ resource "aws_ecr_repository" "main" {
   for_each = toset(local.repository_name)
 
   name                 = each.value
-  image_tag_mutability = "IMMUTABLE"
 }
 
 resource "aws_ecr_lifecycle_policy" "main" {
