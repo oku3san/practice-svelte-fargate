@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "svelte-app/**"
+      - ".github/**"
 
 defaults:
   run:
