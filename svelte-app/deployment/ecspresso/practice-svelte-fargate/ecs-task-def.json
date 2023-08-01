@@ -1,8 +1,8 @@
 {
   "containerDefinitions": [
     {
+      "name": "nginx",
       "command": [],
-      "cpu": 256,
       "entryPoint": [],
       "environment": [],
       "essential": true,
@@ -17,13 +17,38 @@
           "awslogs-stream-prefix": "nginx"
         }
       },
-      "memoryReservation": 512,
       "mountPoints": [],
-      "name": "practice-svelte-fargate",
       "portMappings": [
         {
           "containerPort": 80,
           "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "volumesFrom": []
+    },
+    {
+      "name": "sveltekit",
+      "command": [],
+      "entryPoint": [],
+      "environment": [],
+      "essential": true,
+      "image": "{{ tfstate `aws_ecr_repository.main['sveltekit'].repository_url` }}:latest",
+      "links": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "practice-svelte-fargate",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-create-group": "true",
+          "awslogs-stream-prefix": "sveltekit"
+        }
+      },
+      "mountPoints": [],
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
           "protocol": "tcp"
         }
       ],
