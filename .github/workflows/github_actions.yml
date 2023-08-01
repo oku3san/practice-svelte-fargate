@@ -43,6 +43,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
         id: login-ecr
 
+      - name: Update nginx parameters
+        run:
+          sed -i -e "s/sveltekit:3000/localhost:3000/g" docker/nginx/default.conf
+
       # Docker image のビルドとプッシュ
       # matrix を使って複数の docker image をビルド
       # uses の場合、working-directory は使えないのでフルパス指定
