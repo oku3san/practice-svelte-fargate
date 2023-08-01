@@ -68,3 +68,7 @@ resource "aws_iam_role_policy_attachment" "ecs-task-role" {
   role       = aws_iam_role.ecs-task-role.name
   policy_arn = aws_iam_policy.ecs-task-role.arn
 }
+
+resource "aws_ecs_cluster" "main" {
+  name = "practice-svelte-fargate"
+}
