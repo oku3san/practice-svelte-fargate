@@ -11,3 +11,27 @@ resource "aws_ecr_repository" "main" {
   name                 = each.value
   image_tag_mutability = "IMMUTABLE"
 }
+
+resource "aws_ecr_lifecycle_policy" "main" {
+  for_each = aws_ecr_repository.main
+
+  policy = jsonencode(
+    {
+      rules = [
+        {
+          action = {
+            type = "expire"
+          }
+          description  = "最新の2つを残してイメージを削除する"
+          rulePriority = 1
+          selection = {
+            countNumber = 2
+            countType   = "imageCountMoreThan"
+            tagStatus   = "any"
+          }
+        },
+      ]
+    }
+  )
+  repository = each.value.name
+}
