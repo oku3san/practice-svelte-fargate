@@ -9,7 +9,15 @@
   },
   "desiredCount": 1,
   "enableECSManagedTags": false,
+  "healthCheckGracePeriodSeconds": 0,
   "launchType": "FARGATE",
+  "loadBalancers": [
+    {
+      "containerName": "nginx",
+      "containerPort": 80,
+      "targetGroupArn": "{{ tfstate `aws_security_group.practice-svelte-fargate.id` }}"
+    }
+  ],
   "networkConfiguration": {
     "awsvpcConfiguration": {
       "assignPublicIp": "ENABLED",
