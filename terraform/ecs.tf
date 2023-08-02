@@ -103,3 +103,35 @@ resource "aws_cloudwatch_log_group" "main" {
 resource "aws_ecs_cluster" "main" {
   name = "practice-svelte-fargate"
 }
+
+resource "aws_lb" "main" {
+  name = "practice-svelte-fargate"
+  load_balancer_type = "application"
+  security_groups = [
+    aws_security_group.practice-svelte-fargate.id
+  ]
+  subnets = [
+    aws_subnet.public_1a.id,
+    aws_subnet.public_1c.id
+  ]
+}
+
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.main.arn
+  port = "80"
+  protocol = "HTTP"
+  default_action {
+    type = "forward"
+    target_group_arn = aws_lb_target_group.main.arn
+  }
+}
+
+resource "aws_lb_target_group" "main" {
+  name                 = "practice-svelte-fargate-tg"
+  vpc_id               = aws_vpc.main.id
+  target_type          = "ip"
+  port                 = 80
+  protocol             = "HTTP"
+  deregistration_delay = 60
+  health_check { path = "/" }
+}
