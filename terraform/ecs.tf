@@ -8,7 +8,10 @@ resource "aws_iam_role" "ecs-task-execution-role" {
         {
           "Effect": "Allow",
           "Principal": {
-              "Service": "ecs-tasks.amazonaws.com"
+              "Service": [
+                "ecs-tasks.amazonaws.com",
+                "ecs.amazonaws.com"
+              ]
           },
           "Action": "sts:AssumeRole"
         }
@@ -26,7 +29,6 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role" {
   policy_arn = data.aws_iam_policy.AmazonECSTaskExecutionRolePolicy.arn
 }
 
-
 resource "aws_iam_role" "ecs-task-role" {
   name = "ecs-task-role"
 
@@ -37,7 +39,10 @@ resource "aws_iam_role" "ecs-task-role" {
         {
           "Effect": "Allow",
           "Principal": {
-              "Service": "ecs-tasks.amazonaws.com"
+              "Service": [
+                "ecs-tasks.amazonaws.com",
+                "ecs.amazonaws.com"
+              ]
           },
           "Action": "sts:AssumeRole"
         }
