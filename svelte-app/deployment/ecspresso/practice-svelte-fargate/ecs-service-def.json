@@ -15,7 +15,7 @@
     {
       "containerName": "nginx",
       "containerPort": 80,
-      "targetGroupArn": "{{ tfstate `aws_security_group.practice-svelte-fargate.id` }}"
+      "targetGroupArn": "{{ tfstate `aws_lb_target_group.main.id` }}"
     }
   ],
   "networkConfiguration": {
