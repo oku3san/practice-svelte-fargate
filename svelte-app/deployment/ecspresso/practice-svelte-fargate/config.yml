@@ -3,7 +3,7 @@ cluster: "{{ must_env `CLUSTER_NAME` }}"
 service: practice-svelte-fargate
 service_definition: "./ecs-service-def.json"
 task_definition: "./ecs-task-def.json"
-timeout: 5m
+timeout: 6m
 plugins:
   - name: tfstate
     config:
