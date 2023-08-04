@@ -98,7 +98,7 @@ resource "aws_cloudwatch_log_group" "nginx" {
 }
 
 resource "aws_cloudwatch_log_group" "sveltekit" {
-  name = "practice-svelte-fargate-fargate"
+  name = "practice-svelte-fargate-sveltekit"
 
   retention_in_days = 7
 }
