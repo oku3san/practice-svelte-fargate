@@ -13,8 +13,7 @@
         "options": {
           "awslogs-group": "practice-svelte-fargate",
           "awslogs-region": "ap-northeast-1",
-          "awslogs-create-group": "true",
-          "awslogs-stream-prefix": "nginx"
+          "awslogs-create-group": "true"
         }
       },
       "mountPoints": [],
@@ -40,8 +39,7 @@
         "options": {
           "awslogs-group": "practice-svelte-fargate",
           "awslogs-region": "ap-northeast-1",
-          "awslogs-create-group": "true",
-          "awslogs-stream-prefix": "sveltekit"
+          "awslogs-create-group": "true"
         }
       },
       "mountPoints": [],
