@@ -91,8 +91,14 @@ resource "aws_security_group_rule" "practice-svelte-fargate" {
   cidr_blocks = ["0.0.0.0/0"]
 }
 
-resource "aws_cloudwatch_log_group" "main" {
-  name = "practice-svelte-fargate"
+resource "aws_cloudwatch_log_group" "nginx" {
+  name = "practice-svelte-fargate-nginx"
+
+  retention_in_days = 7
+}
+
+resource "aws_cloudwatch_log_group" "sveltekit" {
+  name = "practice-svelte-fargate-fargate"
 
   retention_in_days = 7
 }
