@@ -103,9 +103,9 @@ resource "aws_cloudwatch_log_group" "sveltekit" {
   retention_in_days = 7
 }
 
-resource "aws_ecs_cluster" "main" {
-  name = "practice-svelte-fargate"
-}
+#resource "aws_ecs_cluster" "main" {
+#  name = "practice-svelte-fargate"
+#}
 
 resource "aws_lb" "main" {
   name = "practice-svelte-fargate"
