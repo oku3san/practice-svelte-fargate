@@ -1,9 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import { Game } from './game';
 import type { PageServerLoad, Actions } from './$types';
-// import { API_KEY } from '$env/static/private';
-
-API_KEY;
 
 export const load = (({ cookies }) => {
 	const game = new Game(cookies.get('sverdle'));
