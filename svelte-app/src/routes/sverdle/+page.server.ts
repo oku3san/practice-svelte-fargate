@@ -1,7 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import { Game } from './game';
 import type { PageServerLoad, Actions } from './$types';
-import { API_KEY } from '$env/static/private';
+// import { API_KEY } from '$env/static/private';
 
 API_KEY;
 
