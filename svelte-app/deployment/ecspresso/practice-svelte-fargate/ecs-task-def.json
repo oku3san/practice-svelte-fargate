@@ -6,7 +6,7 @@
       "entryPoint": [],
       "environment": [],
       "essential": true,
-      "image": "dummy",
+      "image": "{{ tfstate `aws_ecr_repository.main['nginx'].repository_url` }}:{{ must_env `SHA` }}",
       "links": [],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -33,7 +33,7 @@
       "entryPoint": [],
       "environment": [],
       "essential": true,
-      "image": "dummy",
+      "image": "{{ tfstate `aws_ecr_repository.main['sveltekit'].repository_url` }}:{{ must_env `SHA` }}",
       "links": [],
       "logConfiguration": {
         "logDriver": "awslogs",
