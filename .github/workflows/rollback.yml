@@ -13,8 +13,8 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
-    name: deploy
+  rollback:
+    name: rollback
     needs: build
     runs-on: ubuntu-latest
 
