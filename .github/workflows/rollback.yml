@@ -37,4 +37,4 @@ jobs:
           TFC_WORKSPACE: ${{ vars.TFC_WORKSPACE }}
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
         run: |
-          ecspresso rollback --config ./deployment/ecspresso/practice-svelte-fargate/config.yml --dry-run
+          ecspresso rollback --config ./deployment/ecspresso/practice-svelte-fargate/config.yml
