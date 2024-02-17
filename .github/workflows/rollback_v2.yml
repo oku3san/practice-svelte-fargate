@@ -1,0 +1,38 @@
+name: 'Rollback'
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: svelte-app
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  rollback:
+    name: rollback
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: ${{ vars.AWS_IAM_ROLE_ARN }}
+
+      - name: Setup ecspresso
+        uses: kayac/ecspresso@v2
+
+      - name: Rollback
+        env:
+          CLUSTER_NAME: "practice-svelte-fargate"
+          SERVICE_NAME: "practice-svelte-fargate"
+        run: |
+          ecspresso init --cluster=${{ CLUSTER_NAME }} --service =${{ SERVICE_NAME }}
+          ecspresso rollback --dry-run
