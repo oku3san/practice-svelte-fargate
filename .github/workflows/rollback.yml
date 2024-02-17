@@ -2,7 +2,11 @@ name: 'Rollback'
 
 on:
   workflow_dispatch:
-
+    inputs:
+      branchName:
+        description: 'Branch Name'
+        required: true
+        default: 'production'
 
 defaults:
   run:
