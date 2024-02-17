@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "svelte-app/**"
-      - ".github/**"
   workflow_dispatch:
 
 
