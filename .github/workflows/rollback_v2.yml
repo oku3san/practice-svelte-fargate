@@ -3,10 +3,6 @@ name: 'Rollback v2'
 on:
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: svelte-app
-
 permissions:
   id-token: write
   contents: read
