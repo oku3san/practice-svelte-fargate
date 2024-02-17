@@ -57,7 +57,7 @@ jobs:
           context: ./svelte-app
           file: ./svelte-app/docker/${{ matrix.target }}/Dockerfile
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:${{ github.sha }}, ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:latest
+          tags: ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:${{ github.sha }}, ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}::${{ github.sha }}
 
   deploy:
     name: deploy

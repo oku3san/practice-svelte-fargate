@@ -6,7 +6,7 @@
       "entryPoint": [],
       "environment": [],
       "essential": true,
-      "image": "{{ tfstate `aws_ecr_repository.main['nginx'].repository_url` }}:latest",
+      "image": "{{ tfstate `aws_ecr_repository.main['nginx'].repository_url` }}:${{ github.sha }}",
       "links": [],
       "logConfiguration": {
         "logDriver": "awslogs",
