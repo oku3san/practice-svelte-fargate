@@ -52,7 +52,7 @@ jobs:
           context: ./svelte-app
           file: ./svelte-app/docker/${{ matrix.target }}/Dockerfile
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:${{ github.sha }}, ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}::${{ github.sha }}
+          tags: ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:${{ github.sha }}, ${{ steps.login-ecr.outputs.registry }}/${{ matrix.target }}:${{ github.sha }}
 
   deploy:
     name: deploy
@@ -78,5 +78,6 @@ jobs:
           TFC_ORGANIZATION: ${{ vars.TFC_ORGANIZATION }}
           TFC_WORKSPACE: ${{ vars.TFC_WORKSPACE }}
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+          SHA: ${{ github.sha }}
         run: |
           ecspresso deploy --config ./deployment/ecspresso/practice-svelte-fargate/config.yml

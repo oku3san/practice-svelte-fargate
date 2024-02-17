@@ -2,11 +2,6 @@ name: 'Rollback'
 
 on:
   workflow_dispatch:
-    inputs:
-      branchName:
-        description: 'Branch Name'
-        required: true
-        default: 'production'
 
 defaults:
   run:
@@ -40,5 +35,6 @@ jobs:
           TFC_ORGANIZATION: ${{ vars.TFC_ORGANIZATION }}
           TFC_WORKSPACE: ${{ vars.TFC_WORKSPACE }}
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+          SHA: ${{ github.sha }}
         run: |
           ecspresso rollback --config ./deployment/ecspresso/practice-svelte-fargate/config.yml
