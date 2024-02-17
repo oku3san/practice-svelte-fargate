@@ -34,5 +34,5 @@ jobs:
           CLUSTER_NAME: "practice-svelte-fargate"
           SERVICE_NAME: "practice-svelte-fargate"
         run: |
-          ecspresso init --cluster=${{ CLUSTER_NAME }} --service =${{ SERVICE_NAME }}
+          ecspresso init --cluster=${{ CLUSTER_NAME }} --service=${{ SERVICE_NAME }}
           ecspresso rollback --dry-run
